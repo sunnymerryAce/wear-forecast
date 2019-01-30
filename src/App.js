@@ -1,36 +1,39 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import logo from './logo.svg';
-import Navigation from './components/Navigation/Navigation';
+import Login from './pages/login/Login';
 import './App.css';
+import Navigation from './components/Navigation/Navigation';
+import Loading from './components/Loading/Loading';
+import Forecast from './store/containers/Forecast';
 
-export default function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>test</p>
-      </header>
-      <Navigation item="item" />
-    </div>
-  );
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { item: props.item, isLoading: true };
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          <p>React</p>
+        </header>
+        <Forecast />
+        {this.state.isLoading && <Loading />}
+        <Router>
+          <div>
+            <ul>
+              <li>
+                <Link to="/login">Login</Link>
+              </li>
+            </ul>
+            <Route exact path="/login" component={Login} />
+          </div>
+        </Router>
+        <Navigation item="item" />
+      </div>
+    );
+  }
 }
-// class App extends Component {
-//   render() {
-//     return (
-//       <div className="App">
-//         <header className="App-header">
-//           <img src={logo} className="App-logo" alt="logo" />
-//           <p>test</p>
-//           <a
-//             className="App-link"
-//             href="https://reactjs.org"
-//             target="_blank"
-//             rel="noopener noreferrer"
-//           >
-//             Learn React
-//           </a>
-//         </header>
-//       </div>
-//     );
-//   }
-// }
