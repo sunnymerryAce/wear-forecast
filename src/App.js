@@ -10,7 +10,7 @@ import Forecast from './store/containers/Forecast';
 export default class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { item: props.item, isLoading: true };
+    this.state = {};
   }
 
   render() {

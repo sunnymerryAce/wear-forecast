@@ -1,4 +1,4 @@
-import { SET_WEATHER } from '../constants/ActionTypes';
+import { FETCH_GET_REQUEST, FETCH_GET_SUCCESS } from '../constants/ActionTypes';
 
 /**
  * 天気情報のReducer
@@ -6,13 +6,18 @@ import { SET_WEATHER } from '../constants/ActionTypes';
  * @param {object} action
  * @return {object} new state
  */
-const weather = (state = {}, action) => {
+const weatherReducer = (state = {}, action) => {
   switch (action.type) {
-    case SET_WEATHER:
-      return Object.assign({}, state, { weather: action.weather });
+    case FETCH_GET_REQUEST:
+      return Object.assign({}, state, { isFetching: true });
+    case FETCH_GET_SUCCESS:
+      return Object.assign({}, state, {
+        isFetching: false,
+        weather: action.json,
+      });
     default:
       return state;
   }
 };
 
-export default weather;
+export default weatherReducer;

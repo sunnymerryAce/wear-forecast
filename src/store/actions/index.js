@@ -1,17 +1,36 @@
 import * as types from '../constants/ActionTypes';
 
-export const addTodo = (text) => ({ type: types.ADD_TODO, text });
-export const deleteTodo = (id) => ({ type: types.DELETE_TODO, id });
-export const editTodo = (id, text) => ({ type: types.EDIT_TODO, id, text });
-export const completeTodo = (id) => ({ type: types.COMPLETE_TODO, id });
-export const completeAllTodos = () => ({ type: types.COMPLETE_ALL_TODOS });
-export const clearCompleted = () => ({ type: types.CLEAR_COMPLETED });
-export const setVisibilityFilter = (filter) => ({
-  type: types.SET_VISIBILITY_FILTER,
-  filter,
-});
-
 export const setWeather = (weather) => ({
   type: types.SET_WEATHER,
   weather,
 });
+
+export const fetchGetRequest = () => ({ type: types.FETCH_GET_REQUEST });
+export const fetchGetFailure = () => ({
+  type: types.FETCH_GET_FAILURE,
+  error: 'Oops',
+});
+export const fetchGetSuccess = (json) => ({
+  type: types.FETCH_GET_SUCCESS,
+  json,
+});
+
+export const fetchGet = () => {
+  return function(dispatch) {
+    dispatch(fetchGetRequest);
+
+    const url =
+      'https://us-central1-expense-book-react.cloudfunctions.net/getForecast';
+    const latitude = '35.681236';
+    const longitude = '139.767125';
+    return fetch(`${url}?latitude=${latitude}&longitude=${longitude}`)
+      .then(
+        (response) => response.json(),
+        (error) => console.log('An error occurred.', error)
+      )
+      .then((json) => {
+        // state???
+        dispatch(fetchGetSuccess(json));
+      });
+  };
+};

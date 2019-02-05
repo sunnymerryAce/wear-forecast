@@ -1,27 +1,32 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
+
+import rootReducer from './store/reducers';
+import { fetchGet } from './store/actions';
 
 import './index.css';
-import App from './App';
-import rootReducer from './store/reducers';
 
-import Login from './pages/login/Login';
+import App from './App';
+
 import * as serviceWorker from './serviceWorker';
+
 import firebase from './common/firebase';
 
-// firestore初期化
-const firestore = firebase.firestore();
-const settings = { /* your settings... */ timestampsInSnapshots: true };
-firestore.settings(settings);
+// // firestore初期化
+// const firestore = firebase.firestore();
+// const settings = { /* your settings... */ timestampsInSnapshots: true };
+// firestore.settings(settings);
 
-firestore
-  .collection('users')
-  .doc('test')
-  .onSnapshot((doc) => {});
+// firestore
+//   .collection('users')
+//   .doc('test')
+//   .onSnapshot((doc) => {});
 
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, applyMiddleware(thunk));
+store.dispatch(fetchGet()).then(() => console.log(store.getState()));
 
 ReactDOM.render(
   <Provider store={store}>
