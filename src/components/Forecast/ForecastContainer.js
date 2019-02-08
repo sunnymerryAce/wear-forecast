@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
-import { setWeather } from '../actions';
-import Forecast from '../../components/Forecast/Forecast';
+import { setWeather } from '../../store/actions';
+import Forecast from './Forecast';
 
 const mapStateToProps = (state) => {
   return {
-    weatherReducer: state.weatherReducer,
+    weather: state.weather,
   };
 };
 

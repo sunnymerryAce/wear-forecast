@@ -7,7 +7,7 @@ import './Loading.css';
 export default function Loading() {
   return (
     <div className="Loading">
-      <p className="Loading-Text">Loading...</p>
+      <div className="loader">Loading...</div>
     </div>
   );
 }

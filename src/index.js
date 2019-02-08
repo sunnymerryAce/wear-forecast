@@ -10,21 +10,9 @@ import InitialState from './store/InitialState';
 
 import './index.css';
 
-import App from './App';
+import App from './AppContainer';
 
 import * as serviceWorker from './serviceWorker';
-
-import firebase from './common/firebase';
-
-// // firestore初期化
-// const firestore = firebase.firestore();
-// const settings = { /* your settings... */ timestampsInSnapshots: true };
-// firestore.settings(settings);
-
-// firestore
-//   .collection('users')
-//   .doc('test')
-//   .onSnapshot((doc) => {});
 
 const store = createStore(rootReducer, InitialState, applyMiddleware(thunk));
 store.dispatch(fetchGet());

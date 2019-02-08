@@ -1,7 +1,7 @@
 const InitialState = {
-  weatherReducer: {
+  weather: {
     isFetching: true,
-    weather: {
+    forecast: {
       latitude: 0,
       longitude: 139.767125,
       timezone: 'Asia/Tokyo',
