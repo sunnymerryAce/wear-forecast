@@ -2,9 +2,11 @@ import { connect } from 'react-redux';
 import { setWeather } from '../actions';
 import Forecast from '../../components/Forecast/Forecast';
 
-const mapStateToProps = (state) => ({
-  weather: state.weather,
-});
+const mapStateToProps = (state) => {
+  return {
+    weatherReducer: state.weatherReducer,
+  };
+};
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   setWeather: () => {

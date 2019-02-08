@@ -6,29 +6,8 @@ export default class Forecast extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      weather: props.weather,
-      setWeather: props.setWeather,
+      weather: props.weatherReducer.weather,
     };
-
-    // Cloud Functionsテスト
-    // const url =
-    //   'https://us-central1-expense-book-react.cloudfunctions.net/getForecast';
-    // const latitude = '35.681236';
-    // const longitude = '139.767125';
-
-    // fetch(`${url}?latitude=${latitude}&longitude=${longitude}`)
-    //   .then((response) => {
-    //     // responseからJSONを抽出
-    //     return response.json();
-    //   })
-    //   .then((json) => {
-    //     this.state.setWeather(json);
-    //     console.log(this.state.weather);
-
-    //     this.setState({
-    //       today: new Date(this.state.weather.hourly.data[0].time * 1000),
-    //     });
-    //   });
   }
   // 引数の明示
   static propTypes = {
@@ -41,9 +20,10 @@ export default class Forecast extends Component {
   render() {
     return (
       <div className="Forecast">
-        <p>現在の体感気温：</p>
+        <p>propsからの値：{this.props.weatherReducer.weather.latitude}</p>
+        <p>this.stateからの値：{this.state.weather.latitude}</p>
         <div>
-          {this.state.weather.isFetching ? (
+          {this.props.weatherReducer.isFetching ? (
             <p>trueの場合</p>
           ) : (
             <p>falseの場合</p>

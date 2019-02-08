@@ -6,6 +6,7 @@ import thunk from 'redux-thunk';
 
 import rootReducer from './store/reducers';
 import { fetchGet } from './store/actions';
+import InitialState from './store/InitialState';
 
 import './index.css';
 
@@ -25,8 +26,8 @@ import firebase from './common/firebase';
 //   .doc('test')
 //   .onSnapshot((doc) => {});
 
-const store = createStore(rootReducer, applyMiddleware(thunk));
-store.dispatch(fetchGet()).then(() => console.log(store.getState()));
+const store = createStore(rootReducer, InitialState, applyMiddleware(thunk));
+store.dispatch(fetchGet());
 
 ReactDOM.render(
   <Provider store={store}>
