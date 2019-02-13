@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import Today from './Today/Today';
+import Hourly from './Hourly/Hourly';
+import Daily from './Daily/Daily';
 
 export default class Forecast extends Component {
   constructor(props) {
@@ -13,11 +16,9 @@ export default class Forecast extends Component {
   render() {
     return (
       <div className="Forecast">
-        <p>propsからの値：現在の</p>
-        <p>気温: {this.props.weather.forecast.currently.temperature}</p>
-        <p>
-          体感気温: {this.props.weather.forecast.currently.apparentTemperature}
-        </p>
+        <Today today={this.props.weather.forecast.daily.data[0]} />
+        <Hourly hourly={this.props.weather.forecast.hourly.data} />
+        <Daily daily={this.props.weather.forecast.daily.data} />
       </div>
     );
   }
