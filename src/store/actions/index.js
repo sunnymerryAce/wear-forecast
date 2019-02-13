@@ -18,19 +18,25 @@ export const fetchGetSuccess = (json) => ({
 export const fetchGet = () => {
   return function(dispatch) {
     dispatch(fetchGetRequest);
+    let latitude = '35.681236';
+    let longitude = '139.767125';
 
-    const url =
-      'https://us-central1-expense-book-react.cloudfunctions.net/getForecast';
-    const latitude = '35.681236';
-    const longitude = '139.767125';
-    return fetch(`${url}?latitude=${latitude}&longitude=${longitude}`)
-      .then(
-        (response) => response.json(),
-        (error) => console.log('An error occurred.', error)
-      )
-      .then((json) => {
-        // state???
-        dispatch(fetchGetSuccess(json));
+    // 位置情報取得
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        latitude = position.coords.latitude;
+        longitude = position.coords.longitude;
+        const url =
+          'https://us-central1-expense-book-react.cloudfunctions.net/getForecast';
+        return fetch(`${url}?latitude=${latitude}&longitude=${longitude}`)
+          .then(
+            (response) => response.json(),
+            (error) => console.log('An error occurred.', error)
+          )
+          .then((json) => {
+            dispatch(fetchGetSuccess(json));
+          });
       });
+    }
   };
 };
