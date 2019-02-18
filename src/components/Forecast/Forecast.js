@@ -4,6 +4,7 @@ import classnames from 'classnames';
 import Today from './Today/Today';
 import Hourly from './Hourly/Hourly';
 import Daily from './Daily/Daily';
+import _ from 'lodash';
 
 export default class Forecast extends Component {
   constructor(props) {
@@ -13,10 +14,22 @@ export default class Forecast extends Component {
     };
   }
 
+  // 12時間内の平均気温
+  averageTemperature() {
+    return _.chain(this.props.weather.forecast.hourly.data)
+      .map('apparentTemperature')
+      .slice(0, 12)
+      .mean()
+      .value();
+  }
+
   render() {
     return (
       <div className="Forecast">
-        <Today today={this.props.weather.forecast.daily.data[0]} />
+        <Today
+          today={this.props.weather.forecast.daily.data[0]}
+          average={this.averageTemperature()}
+        />
         <Hourly hourly={this.props.weather.forecast.hourly.data} />
         <Daily daily={this.props.weather.forecast.daily.data} />
       </div>
