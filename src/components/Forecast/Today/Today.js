@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import image from '../../../images/2/2-02.jpg'; // Tell Webpack this JS file uses this image
+
 export default class Today extends Component {
   constructor(props) {
     super(props);
@@ -12,9 +14,10 @@ export default class Today extends Component {
   render() {
     return (
       <div className="Today">
-        <p>今日の天気:{this.state.today.icon}</p>
+        <p>今日の天気:{this.state.today.summary}</p>
         <p>今日の最高気温:{this.state.today.apparentTemperatureHigh}</p>
         <p>今日の最低気温:{this.state.today.apparentTemperatureLow}</p>
+        <img src={image} alt="image" />
       </div>
     );
   }

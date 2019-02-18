@@ -15,7 +15,7 @@ export default class Daily extends Component {
         {this.state.daily.map((item, index) => {
           return (
             <div key={index}>
-              time: {this.getHour(item.time)} {item.icon}
+              time: {this.getHour(item.time)} {item.summary}
             </div>
           );
         })}
