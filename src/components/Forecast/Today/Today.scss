@@ -1,3 +1,38 @@
+.icon {
+  width: 50%;
+  height: 100px;
+  &.clear-day {
+    background: url('../../../images/icon/clear-day.svg') no-repeat center/cover;
+  }
+  &.clear-night {
+    background: url('../../../images/icon/clear-night.svg') no-repeat center/cover;
+  }
+  &.rain {
+    background: url('../../../images/icon/rain.svg') no-repeat center/cover;
+  }
+  &.snow {
+    background: url('../../../images/icon/snow.svg') no-repeat center/cover;
+  }
+  &.sleet {
+    background: url('../../../images/icon/snow.svg') no-repeat center/cover;
+  }
+  &.wind {
+    background: url('../../../images/icon/wind.svg') no-repeat center/cover;
+  }
+  &.fog {
+    background: url('../../../images/icon/fog.svg') no-repeat center/cover;
+  }
+  &.cloudy {
+    background: url('../../../images/icon/cloudy.svg') no-repeat center/cover;
+  }
+  &.partly-cloudy-day {
+    background: url('../../../images/icon/partly-cloudy-day.svg') no-repeat center/cover;
+  }
+  &.partly-cloudy-night {
+    background: url('../../../images/icon/partly-cloudy-night.svg') no-repeat center/cover;
+  }
+}
+
 .wearing-image {
   width: 100%;
   height: 500px;

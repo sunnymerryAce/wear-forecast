@@ -15,7 +15,8 @@ export default class Hourly extends Component {
         {this.state.hourly.map((item, index) => {
           return (
             <div key={index}>
-              time: {this.getHour(item.time)}、{item.apparentTemperature}
+              time: {this.getHour(item.time)}、{item.apparentTemperature}、
+              {item.icon}
             </div>
           );
         })}
@@ -24,8 +25,6 @@ export default class Hourly extends Component {
   }
 
   getHour(time) {
-    console.log();
-
     const date = new Date(time * 1000);
     return `${date.getMonth() + 1}/${date.getDate()} ${date.getHours()}時`;
   }

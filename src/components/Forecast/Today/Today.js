@@ -46,9 +46,10 @@ export default class Today extends Component {
   render() {
     return (
       <div className="Today">
-        <p>今日の天気:{this.state.today.summary}</p>
-        <p>今日の最高気温:{this.state.today.apparentTemperatureHigh}</p>
-        <p>今日の最低気温:{this.state.today.apparentTemperatureLow}</p>
+        <figure className={classnames('icon', `${this.state.today.icon}`)} />
+        <p>コメント:{this.state.today.summary}</p>
+        <p>最高気温:{this.state.today.apparentTemperatureHigh}</p>
+        <p>最低気温:{this.state.today.apparentTemperatureLow}</p>
         <figure
           className={classnames(
             'wearing-image',
