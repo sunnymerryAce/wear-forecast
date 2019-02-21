@@ -1,4 +1,4 @@
-import { FETCH_GET_REQUEST, FETCH_GET_SUCCESS } from '../CONSTs/ActionTypes';
+import CONST from '../../helper/CONST';
 
 /**
  * 天気情報のReducer
@@ -8,9 +8,9 @@ import { FETCH_GET_REQUEST, FETCH_GET_SUCCESS } from '../CONSTs/ActionTypes';
  */
 const weather = (state = {}, action) => {
   switch (action.type) {
-    case FETCH_GET_REQUEST:
+    case CONST.ACTION_TYPE.FETCH_GET_REQUEST:
       return Object.assign({}, state, { isFetching: true });
-    case FETCH_GET_SUCCESS:
+    case CONST.ACTION_TYPE.FETCH_GET_SUCCESS:
       return Object.assign({}, state, {
         isFetching: false,
         forecast: action.json,

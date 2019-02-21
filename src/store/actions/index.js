@@ -1,17 +1,19 @@
-import * as types from '../CONSTs/ActionTypes';
+import CONST from '../../helper/CONST';
 
 export const setWeather = (weather) => ({
-  type: types.SET_WEATHER,
+  type: CONST.ACTION_TYPE.SET_WEATHER,
   weather,
 });
 
-export const fetchGetRequest = () => ({ type: types.FETCH_GET_REQUEST });
+export const fetchGetRequest = () => ({
+  type: CONST.ACTION_TYPE.FETCH_GET_REQUEST,
+});
 export const fetchGetFailure = () => ({
-  type: types.FETCH_GET_FAILURE,
+  type: CONST.ACTION_TYPE.FETCH_GET_FAILURE,
   error: 'Oops',
 });
 export const fetchGetSuccess = (json) => ({
-  type: types.FETCH_GET_SUCCESS,
+  type: CONST.ACTION_TYPE.FETCH_GET_SUCCESS,
   json,
 });
 
