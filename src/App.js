@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import './App.scss';
+import 'antd-mobile/dist/antd-mobile.css';
+
 import Loading from './components/Loading/Loading';
 import Forecast from './components/Forecast/ForecastContainer';
 import PropTypes from 'prop-types';

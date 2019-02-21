@@ -5,6 +5,12 @@ import Today from './Today/Today';
 import Hourly from './Hourly/Hourly';
 import Daily from './Daily/Daily';
 import _ from 'lodash';
+import { NavBar, Icon, Tabs } from 'antd-mobile';
+
+const tabs = [
+  { title: '1時間ごと', sub: '1' },
+  { title: '週間天気', sub: '2' },
+];
 
 export default class Forecast extends Component {
   constructor(props) {
@@ -26,12 +32,46 @@ export default class Forecast extends Component {
   render() {
     return (
       <div className="Forecast">
+        <NavBar mode="dark" rightContent={[<Icon key="0" type="ellipsis" />]}>
+          Wear Forecast
+        </NavBar>
         <Today
           today={this.props.weather.forecast.daily.data[0]}
           average={this.averageTemperature()}
         />
-        <Hourly hourly={this.props.weather.forecast.hourly.data} />
-        <Daily daily={this.props.weather.forecast.daily.data} />
+        <Tabs
+          tabs={tabs}
+          initialPage={1}
+          onChange={(tab, index) => {
+            console.log('onChange', index, tab);
+          }}
+          onTabClick={(tab, index) => {
+            console.log('onTabClick', index, tab);
+          }}
+        >
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              height: '150px',
+              backgroundColor: '#fff',
+            }}
+          >
+            <Hourly hourly={this.props.weather.forecast.hourly.data} />
+          </div>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              height: '150px',
+              backgroundColor: '#fff',
+            }}
+          >
+            <Daily daily={this.props.weather.forecast.daily.data} />
+          </div>
+        </Tabs>
       </div>
     );
   }
