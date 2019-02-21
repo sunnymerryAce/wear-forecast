@@ -1,35 +1,87 @@
-.icon {
-  width: 50%;
-  height: 100px;
-  &.clear-day {
-    background: url('../../../images/icon/clear-day.svg') no-repeat center/cover;
+@import url('https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c');
+
+html {
+    font-size:100%;
+    font-size:62.5%;
+}
+
+.today__wrapper {
+  display: flex;
+  width: 100%;
+  .today__info {
+    width: 50%;
+    .today__info__icon {
+      width: 100%;
+      height: auto;
+      position: relative;
+      &:before {
+        content: "";
+        display: block;
+        padding-top: 100%;
+      }
+      .icon {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        &.clear-day {
+          background: url('../../../images/icon/clear-day.svg') no-repeat center/cover;
+        }
+        &.clear-night {
+          background: url('../../../images/icon/clear-night.svg') no-repeat center/cover;
+        }
+        &.rain {
+          background: url('../../../images/icon/rain.svg') no-repeat center/cover;
+        }
+        &.snow {
+          background: url('../../../images/icon/snow.svg') no-repeat center/cover;
+        }
+        &.sleet {
+          background: url('../../../images/icon/snow.svg') no-repeat center/cover;
+        }
+        &.wind {
+          background: url('../../../images/icon/wind.svg') no-repeat center/cover;
+        }
+        &.fog {
+          background: url('../../../images/icon/fog.svg') no-repeat center/cover;
+        }
+        &.cloudy {
+          background: url('../../../images/icon/cloudy.svg') no-repeat center/cover;
+        }
+        &.partly-cloudy-day {
+          background: url('../../../images/icon/partly-cloudy-day.svg') no-repeat center/cover;
+        }
+        &.partly-cloudy-night {
+          background: url('../../../images/icon/partly-cloudy-night.svg') no-repeat center/cover;
+        }
+      }
+    }
   }
-  &.clear-night {
-    background: url('../../../images/icon/clear-night.svg') no-repeat center/cover;
+  .today__info__temperature {
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    display: flex;
+    > * {
+    width: 50%;
+    text-align: center;
+    &:first-child {
+      border-right: 1px solid #999999;
+    }
+    }
+    .today__info__temperature--high {
+      color: #ff0000;
+    }
+    .today__info__temperature--low {
+      color: #0000ff;
+    }
+    .today__info__temperature--number {
+      font-size: 2rem;
+      padding-right: 5px;
+    }
   }
-  &.rain {
-    background: url('../../../images/icon/rain.svg') no-repeat center/cover;
-  }
-  &.snow {
-    background: url('../../../images/icon/snow.svg') no-repeat center/cover;
-  }
-  &.sleet {
-    background: url('../../../images/icon/snow.svg') no-repeat center/cover;
-  }
-  &.wind {
-    background: url('../../../images/icon/wind.svg') no-repeat center/cover;
-  }
-  &.fog {
-    background: url('../../../images/icon/fog.svg') no-repeat center/cover;
-  }
-  &.cloudy {
-    background: url('../../../images/icon/cloudy.svg') no-repeat center/cover;
-  }
-  &.partly-cloudy-day {
-    background: url('../../../images/icon/partly-cloudy-day.svg') no-repeat center/cover;
-  }
-  &.partly-cloudy-night {
-    background: url('../../../images/icon/partly-cloudy-night.svg') no-repeat center/cover;
+  .today__image {
+    width: 50%;
   }
 }
 

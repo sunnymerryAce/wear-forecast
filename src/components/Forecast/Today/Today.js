@@ -15,26 +15,27 @@ export default class Today extends Component {
   }
 
   temperatureLevel(number) {
+    console.log(number);
     let level = null;
-    if (isInRange({ number, last: 6 })) {
+    if (isInRange({ number, last: 7 })) {
       level = 1;
     }
-    if (isInRange({ number, first: 7, last: 11 })) {
+    if (isInRange({ number, first: 7, last: 12 })) {
       level = 2;
     }
-    if (isInRange({ number, first: 12, last: 15 })) {
+    if (isInRange({ number, first: 12, last: 16 })) {
       level = 3;
     }
-    if (isInRange({ number, first: 16, last: 20 })) {
+    if (isInRange({ number, first: 16, last: 21 })) {
       level = 4;
     }
-    if (isInRange({ number, first: 21, last: 25 })) {
+    if (isInRange({ number, first: 21, last: 26 })) {
       level = 5;
     }
-    if (isInRange({ number, first: 26, last: 30 })) {
+    if (isInRange({ number, first: 26, last: 31 })) {
       level = 6;
     }
-    if (isInRange({ number, first: 31, last: 35 })) {
+    if (isInRange({ number, first: 31, last: 36 })) {
       level = 7;
     }
     if (isInRange({ number, first: 36 })) {
@@ -46,18 +47,40 @@ export default class Today extends Component {
   render() {
     return (
       <div className="Today">
-        <figure className={classnames('icon', `${this.state.today.icon}`)} />
-        <p>コメント:{this.state.today.summary}</p>
-        <p>最高気温:{this.state.today.apparentTemperatureHigh}</p>
-        <p>最低気温:{this.state.today.apparentTemperatureLow}</p>
-        <figure
-          className={classnames(
-            'wearing-image',
-            `wearing-image--${this.state.temperatureLevel}-0${
-              this.state.imageIndex
-            }`
-          )}
-        />
+        <div className="today__wrapper">
+          <div className="today__info">
+            <div className="today__info__icon">
+              <figure
+                className={classnames('icon', `${this.state.today.icon}`)}
+              />
+            </div>
+            <div className="today__info__temperature">
+              <div className="today__info__temperature--high">
+                <span className="today__info__temperature--number">
+                  {Math.round(this.state.today.apparentTemperatureHigh)}
+                </span>
+                ℃
+              </div>
+              <div className="today__info__temperature--low">
+                <span className="today__info__temperature--number">
+                  {Math.round(this.state.today.apparentTemperatureLow)}
+                </span>
+                ℃
+              </div>
+            </div>
+            <p className="comment">コメント:{this.state.today.summary}</p>
+          </div>
+          <div className="today__image">
+            <figure
+              className={classnames(
+                'wearing-image',
+                `wearing-image--${this.state.temperatureLevel}-0${
+                  this.state.imageIndex
+                }`
+              )}
+            />
+          </div>
+        </div>
       </div>
     );
   }
