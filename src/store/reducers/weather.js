@@ -1,4 +1,4 @@
-import { FETCH_GET_REQUEST, FETCH_GET_SUCCESS } from '../constants/ActionTypes';
+import { FETCH_GET_REQUEST, FETCH_GET_SUCCESS } from '../CONSTs/ActionTypes';
 
 /**
  * 天気情報のReducer

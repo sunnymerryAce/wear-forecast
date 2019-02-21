@@ -1,4 +1,4 @@
-import * as types from '../constants/ActionTypes';
+import * as types from '../CONSTs/ActionTypes';
 
 export const setWeather = (weather) => ({
   type: types.SET_WEATHER,
