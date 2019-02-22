@@ -36,12 +36,14 @@ export default class Forecast extends Component {
           Wear Forecast
         </NavBar>
         <Today
+          current={this.props.weather.forecast.currently}
           today={this.props.weather.forecast.daily.data[0]}
           average={this.averageTemperature()}
         />
         <Tabs
           tabs={tabs}
-          initialPage={1}
+          initialPage={0}
+          swipeable={false}
           onChange={(tab, index) => {
             console.log('onChange', index, tab);
           }}
@@ -54,7 +56,7 @@ export default class Forecast extends Component {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              height: '150px',
+              height: '160px',
               backgroundColor: '#fff',
             }}
           >
@@ -65,7 +67,7 @@ export default class Forecast extends Component {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              height: '150px',
+              height: '160px',
               backgroundColor: '#fff',
             }}
           >

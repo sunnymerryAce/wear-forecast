@@ -8,6 +8,7 @@ export default class Today extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      current: props.current,
       today: props.today,
       temperatureLevel: this.temperatureLevel(props.average),
       imageIndex: randomIntegerInRange({ min: 1, max: 5 }),
@@ -15,7 +16,6 @@ export default class Today extends Component {
   }
 
   temperatureLevel(number) {
-    console.log(number);
     let level = null;
     if (isInRange({ number, last: 7 })) {
       level = 1;
@@ -51,7 +51,7 @@ export default class Today extends Component {
           <div className="today__info">
             <div className="today__info__icon">
               <figure
-                className={classnames('icon', `${this.state.today.icon}`)}
+                className={classnames('icon', `${this.state.current.icon}`)}
               />
             </div>
             <div className="today__info__temperature">
@@ -68,7 +68,7 @@ export default class Today extends Component {
                 ℃
               </div>
             </div>
-            <p className="comment">コメント:{this.state.today.summary}</p>
+            <p className="comment">{this.state.current.summary}</p>
           </div>
           <div className="today__image">
             <figure
