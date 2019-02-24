@@ -1,14 +1,22 @@
+
+.am-tabs-pane-wrap-inactive {
+  overflow: hidden !important;
+}
+.am-tabs-pane-wrap-active {
+  z-index: 2;
+  -webkit-overflow-scrolling: touch;
+}
 .Daily {
   width: 100%;
-  overflow: scroll;
+  white-space: nowrap;
 }
 
 .daily__wrapper {
-  width: 200vw;
   .daily__info {
     width: 25vw;
     display: inline-block;
     vertical-align: top;
+    white-space: normal;
     .daily__info__icon {
       height: auto;
       position: relative;

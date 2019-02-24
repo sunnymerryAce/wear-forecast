@@ -1,13 +1,22 @@
+.am-tabs-pane-wrap-inactive {
+  overflow: hidden !important;
+}
+.am-tabs-pane-wrap-active {
+  z-index: 2;
+  -webkit-overflow-scrolling: touch;
+}
 .Hourly {
   width: 100%;
-  overflow: scroll;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 
 .hourly__wrapper {
-  width: 600vw;
   .hourly__info {
     width: 25vw;
     display: inline-block;
+    white-space: normal;
     .hourly__info__icon {
       height: auto;
       position: relative;

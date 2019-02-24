@@ -5,7 +5,9 @@ import Today from './Today/Today';
 import Hourly from './Hourly/Hourly';
 import Daily from './Daily/Daily';
 import _ from 'lodash';
-import { NavBar, Icon, Tabs } from 'antd-mobile';
+import { Popover, NavBar, Icon, Tabs, Range, Switch, List } from 'antd-mobile';
+
+const Item = Popover.Item;
 
 const tabs = [
   { title: '1時間ごと', sub: '1' },
@@ -32,7 +34,63 @@ export default class Forecast extends Component {
   render() {
     return (
       <div className="Forecast">
-        <NavBar mode="dark" rightContent={[<Icon key="0" type="ellipsis" />]}>
+        <NavBar
+          mode="dark"
+          rightContent={
+            <Popover
+              mask
+              overlayClassName="fortest"
+              overlayStyle={{ color: 'currentColor' }}
+              visible={this.state.visible}
+              overlay={[
+                <Item key="4" value="scan" data-seed="logId">
+                  暑がり度
+                  <Range
+                    style={{ marginLeft: 30, marginRight: 30, width: '80vw' }}
+                    min={0}
+                    max={20}
+                    defaultValue={[3, 10]}
+                  />
+                </Item>,
+                <Item key="5" value="special" style={{ whiteSpace: 'nowrap' }}>
+                  性別
+                  <List>
+                    <List.Item
+                      extra={
+                        <Switch
+                          checked={this.state.checked}
+                          onChange={() => {
+                            this.setState({
+                              checked: !this.state.checked,
+                            });
+                          }}
+                        />
+                      }
+                    />
+                  </List>
+                </Item>,
+              ]}
+              align={{
+                overflow: { adjustY: 0, adjustX: 0 },
+                offset: [-10, 0],
+              }}
+              onVisibleChange={this.handleVisibleChange}
+              onSelect={this.onSelect}
+            >
+              <div
+                style={{
+                  height: '100%',
+                  padding: '0 15px',
+                  marginRight: '-15px',
+                  display: 'flex',
+                  alignItems: 'center',
+                }}
+              >
+                <Icon type="ellipsis" />
+              </div>
+            </Popover>
+          }
+        >
           Wear Forecast
         </NavBar>
         <Today
@@ -56,7 +114,7 @@ export default class Forecast extends Component {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              height: '160px',
+              height: '35vh',
               backgroundColor: '#fff',
             }}
           >
@@ -67,7 +125,7 @@ export default class Forecast extends Component {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              height: '160px',
+              height: '35vh',
               backgroundColor: '#fff',
             }}
           >
