@@ -4,10 +4,9 @@ import classnames from 'classnames';
 import Today from './Today/Today';
 import Hourly from './Hourly/Hourly';
 import Daily from './Daily/Daily';
+import Setting from './Setting/Setting';
 import _ from 'lodash';
-import { Popover, NavBar, Icon, Tabs, Range, Switch, List } from 'antd-mobile';
-
-const Item = Popover.Item;
+import {NavBar, Icon, Tabs, Range, Switch, List } from 'antd-mobile';
 
 const tabs = [
   { title: '1時間ごと', sub: '1' },
@@ -37,58 +36,7 @@ export default class Forecast extends Component {
         <NavBar
           mode="dark"
           rightContent={
-            <Popover
-              mask
-              overlayClassName="fortest"
-              overlayStyle={{ color: 'currentColor' }}
-              visible={this.state.visible}
-              overlay={[
-                <Item key="4" value="scan" data-seed="logId">
-                  暑がり度
-                  <Range
-                    style={{ marginLeft: 30, marginRight: 30, width: '80vw' }}
-                    min={0}
-                    max={20}
-                    defaultValue={[3, 10]}
-                  />
-                </Item>,
-                <Item key="5" value="special" style={{ whiteSpace: 'nowrap' }}>
-                  性別
-                  <List>
-                    <List.Item
-                      extra={
-                        <Switch
-                          checked={this.state.checked}
-                          onChange={() => {
-                            this.setState({
-                              checked: !this.state.checked,
-                            });
-                          }}
-                        />
-                      }
-                    />
-                  </List>
-                </Item>,
-              ]}
-              align={{
-                overflow: { adjustY: 0, adjustX: 0 },
-                offset: [-10, 0],
-              }}
-              onVisibleChange={this.handleVisibleChange}
-              onSelect={this.onSelect}
-            >
-              <div
-                style={{
-                  height: '100%',
-                  padding: '0 15px',
-                  marginRight: '-15px',
-                  display: 'flex',
-                  alignItems: 'center',
-                }}
-              >
-                <Icon type="ellipsis" />
-              </div>
-            </Popover>
+            <Setting></Setting>
           }
         >
           Wear Forecast
